@@ -24,26 +24,17 @@ function MenuPage(){
                         className="
                             fixed
                             left-8
-                            top-15
-                            -translate-y-1/2
-
-                            pb-1
-                            pt-1
-                            pl-5
-                            pr-5
+                            top-[60px]
+                            z-50
+                            px-5 py-1
                             bg-slate-700
                             border-4 border-white
                             text-white
-
-                            transition-all
-
-
+                            transition-transform duration-100
                             hover:bg-green-500
                             hover:shadow-[6px_6px_0_black]
                             hover:scale-105
-
-                            active:translate-y-1
-                            active:shadow-none
+                            active:scale-95
                         "
                     >
                         <ChevronsLeft />
