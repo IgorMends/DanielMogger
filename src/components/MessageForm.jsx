@@ -9,6 +9,51 @@ function MessageForm() {
         messageType: "text",
     });
 
+    async function request(endpoint, instanceId, instanceToken, clientToken, number, body){
+        const response = await fetch(`https://api.z-api.io/instances/${instanceId}/token/${instanceToken}/${endpoint}`, {
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json",
+                "Client-Token": `${clientToken}`
+            },
+            body: JSON.stringify(body)
+        });
+
+        const data = await response.json();
+
+        console.log(data)
+        return await response.json();
+    }
+
+    async function sendMessage(type, number, instanceId, instanceToken, clientToken){
+        switch(type){
+            case "text":
+                await request("/send-text", instanceId, instanceToken, clientToken, number, 
+                    {
+                        "phone": `${number}`,
+                        "message": "You have been mogged"
+                    }
+                )
+                break;
+            case "audio":
+                await request("/send-audio", instanceId, instanceToken, clientToken, number, 
+                    {
+                        "phone": `${number}`,
+                        "audio": "commingSoon"
+                    }
+                )
+                break;
+            case "image":
+                await request("/send-image", instanceId, instanceToken, clientToken, number, 
+                    {
+                        "phone": `${number}`,
+                        "image": "commingSoon"
+                    }
+                ) 
+                break;       
+        }
+    }
+
     function handleChange(e) {
         setFormData({
             ...formData,
@@ -267,6 +312,11 @@ function MessageForm() {
 
             <div className="mt-12 flex justify-center">
                 <button
+                    onClick={() => {(sendMessage(formData.messageType,
+                                                formData.phone,
+                                                formData.instanceId,
+                                                formData.instanceToken,
+                                                formData.clientToken))}}
                     className="
                         font-terminal
                         text-2xl
