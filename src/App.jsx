@@ -2,10 +2,14 @@ import "@fontsource/press-start-2p";
 import "@fontsource/pixelify-sans";
 import "@fontsource/vt323";
 import StartComponent from "./components/StartComponent";
+import MainTitle from "./components/MainTitle";
+
 
 function App(){
+    
+
     return(
-         <div className="relative w-full min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-950 flex flex-col items-center p-10">
+         <div className="relative w-full min-h-screen overflow-y-scroll bg-gradient-to-b from-slate-900 via-slate-800 to-slate-950 flex flex-col items-center p-10">
             <div className="
                     fixed
                     inset-0
@@ -16,16 +20,9 @@ function App(){
                 "/>
 
             <div className="max-w-4xl w-full space-y-7 text-center relative z-10">
-                <h1 className="font-game text-5xl text-white drop-shadow-[10px_10px_0_rgb(0,0,0)]">
-                    Daniel Mogger
-                </h1>
-
-                <h2 className="font-terminal text-4xl text-red-400 tracking-[0.3em]">
-                    ULTIMATE
-                </h2>
-
-
                 
+                <MainTitle />        
+
                 <StartComponent />
 
                 <p className="font-terminal text-3xl text-green-400">

@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
+
 function StartComponent() {
+    const navigate = useNavigate()
+
     return (
         <div className="flex justify-center">
             <button
+                onClick={() => navigate('/menu')}
                 className="
                     font-terminal
                     text-6xl
